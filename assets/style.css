@@ -10,7 +10,12 @@ body {
     background-color: #000;
     color: #fff;
     line-height: 1.6;
-    padding-top: 60px; /* Menjaga konten dari navbar */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Loading Screen */
@@ -42,91 +47,34 @@ body {
 }
 
 /* Navigation */
-.navbar {
-    position: fixed;
+nav {
+    position: sticky;
     top: 0;
-    width: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     z-index: 1000;
+}
+
+nav .container {
     padding: 15px 0;
-    height: 60px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-toggle {
-    display: none; /* Sembunyikan di PC */
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 1001;
-}
-
-.menu-toggle.active .fas.fa-bars::before {
-    content: "\f00d"; /* Ikon close (X) dari Font Awesome */
-}
-
-.nav-menu {
+nav ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 30px;
-    align-items: center;
-    transition: all 0.3s ease;
 }
 
-.nav-menu.active {
-    display: flex; /* Tetap flex untuk PC, akan diubah di media query */
-    flex-direction: column;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 20px 0;
-    text-align: center;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
-.nav-menu.active li {
-    margin: 10px 0;
-}
-
-@media (max-width: 768px) { /* Tablet */
-    .menu-toggle {
-        display: block; /* Tampilkan tombol di tablet */
-    }
-    .nav-menu {
-        display: none; /* Sembunyikan menu default di tablet */
-    }
-    .nav-menu.active {
-        display: flex; /* Tampilkan saat toggle aktif */
-    }
-}
-
-@media (max-width: 480px) { /* HP */
-    .menu-toggle {
-        display: block; /* Tampilkan tombol di HP */
-    }
-    .nav-menu {
-        display: none; /* Sembunyikan menu default di HP */
-    }
-    .nav-menu.active {
-        display: flex; /* Tampilkan saat toggle aktif */
-        top: 40px; /* Sesuaikan dengan tinggi navbar HP */
-    }
-    .nav-menu li a {
-        font-size: 1rem; /* Sesuaikan ukuran font */
-    }
+nav ul li a:hover {
+    color: #ffeb3b;
 }
 
 /* Header */
@@ -217,7 +165,7 @@ header {
 .skills-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -353,40 +301,31 @@ header {
     padding: 80px 0;
     background-color: #000;
     color: #fff;
-}
-
-.contact-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    text-align: center;
 }
 
 .contact-title {
     font-size: 2rem;
-    flex: 1;
-    text-align: left;
+    margin-bottom: 30px;
 }
 
 .contact-items {
-    flex: 2;
     display: flex;
+    justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .contact-card {
-    background-color: #d3d3d3; /* Abu-abu muda seperti gambar */
+    background-color: #f5efef; /* Abu-abu tua seperti gambar */
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 8px;
     text-align: center;
     color: #000;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .contact-icon {
@@ -459,4 +398,64 @@ section {
 section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-image {
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .skills-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .skills-title {
+        margin-bottom: 20px;
+    }
+    .skills-icons {
+        justify-content: center;
+        gap: 15px;
+    }
+    .skill-item img {
+        width: 60px;
+        height: 60px;
+    }
+    #skills h2 {
+        font-size: 1.5rem;
+    }
+    .contact-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-card {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-icons {
+        gap: 10px;
+    }
+    .skill-item img {
+        width: 50px;
+        height: 50px;
+    }
+    .contact-card {
+        padding: 15px;
+    }
 }
