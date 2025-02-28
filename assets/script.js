@@ -30,6 +30,14 @@ const menuToggle = document.querySelector('.menu-toggle');
             menuToggle.classList.toggle('active');
         });
 
+        // Reset menu saat ukuran layar berubah ke PC
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
 // Scroll Animation
 window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
