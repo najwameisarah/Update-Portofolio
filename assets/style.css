@@ -65,12 +65,17 @@ body {
 }
 
 .menu-toggle {
-    display: none;
+    display: none; /* Sembunyikan secara default */
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle.active .fas.fa-bars::before {
+    content: "\f00d"; /* Ikon close (X) dari Font Awesome */
 }
 
 .nav-menu {
@@ -78,6 +83,7 @@ body {
     display: flex;
     gap: 30px;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .nav-menu li a {
@@ -89,6 +95,22 @@ body {
 
 .nav-menu li a:hover {
     color: #ffeb3b;
+}
+
+.nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.nav-menu.active li {
+    margin: 10px 0;
 }
 
 /* Header */
@@ -424,23 +446,43 @@ section.visible {
 }
 
 /* Toggle Menu */
+.menu-toggle {
+    display: none; /* Sembunyikan di PC secara default */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001; /* Pastikan di atas konten */
+}
+
 .menu-toggle.active .fas.fa-bars::before {
     content: "\f00d"; /* Ikon close (X) dari Font Awesome */
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
 .nav-menu.active {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
     padding: 20px 0;
     text-align: center;
+    z-index: 1000;
 }
 
-.nav-menu li {
+.nav-menu.active li {
     margin: 10px 0;
 }
 
@@ -452,10 +494,10 @@ section.visible {
         height: 50px;
     }
     .menu-toggle {
-        display: block;
+        display: block; /* Tampilkan tombol di tablet */
     }
     .nav-menu {
-        display: none;
+        display: none; /* Sembunyikan menu default di tablet */
     }
     .nav-menu li a {
         font-size: 1rem;
@@ -518,7 +560,12 @@ section.visible {
         height: 40px;
     }
     .menu-toggle {
-        font-size: 1.2rem;
+        display: block; /* Tampilkan tombol di HP */
+        position: absolute;
+        left: 20px;
+    }
+    .nav-menu {
+        display: none; /* Sembunyikan menu default di HP */
     }
     .nav-menu.active {
         top: 40px;
