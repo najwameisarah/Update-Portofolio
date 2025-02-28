@@ -22,6 +22,14 @@ document.querySelector('.copy-button').addEventListener('click', function() {
     });
 });
 
+const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
 // Scroll Animation
 window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
