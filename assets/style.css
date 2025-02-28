@@ -10,8 +10,12 @@ body {
     background-color: #000;
     color: #fff;
     line-height: 1.6;
-    /* Tambahkan padding top untuk menghindari tabrakan dengan navbar sticky */
-    padding-top: 60px; /* Sesuaikan dengan tinggi navbar */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Loading Screen */
@@ -49,15 +53,10 @@ nav {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     z-index: 1000;
-    padding: 15px 0;
-    /* Pastikan tinggi navbar tetap */
-    height: 60px;
 }
 
 nav .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding: 15px 0;
 }
 
 nav ul {
@@ -65,8 +64,6 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 30px;
-    align-items: center;
-    height: 100%;
 }
 
 nav ul li a {
@@ -168,7 +165,7 @@ header {
 .skills-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -413,19 +410,7 @@ section.visible {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) { /* Tablet */
-    body {
-        padding-top: 50px; /* Sesuaikan padding top untuk tablet */
-    }
-    nav {
-        height: 50px;
-    }
-    nav ul {
-        gap: 15px;
-    }
-    nav ul li a {
-        font-size: 1rem;
-    }
+@media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         gap: 20px;
@@ -435,8 +420,13 @@ section.visible {
         align-items: center;
     }
     .about-image {
-        max-width: 200px;
+        max-width: 250px;
         margin-bottom: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
     }
     .skills-wrapper {
         flex-direction: column;
@@ -471,83 +461,17 @@ section.visible {
         width: 100%;
         max-width: 200px;
     }
-    .project-list {
-        grid-template-columns: 1fr; /* Satu kolom untuk tablet */
-    }
 }
 
-@media (max-width: 480px) { /* HP */
-    body {
-        padding-top: 40px; /* Sesuaikan padding top untuk HP */
-    }
-    nav {
-        height: 40px;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
-    }
-    nav ul li a {
-        font-size: 0.9rem;
-    }
-    .header-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .about-image {
-        max-width: 150px;
-        margin-bottom: 15px;
-    }
-    .about-text h2 {
-        font-size: 1.5rem;
-    }
-    .about-text p {
-        font-size: 1rem;
-    }
-    .skills-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .skills-title {
-        margin-bottom: 15px;
-    }
+@media (max-width: 480px) {
     .skills-icons {
-        justify-content: center;
         gap: 10px;
     }
     .skill-item img {
         width: 50px;
         height: 50px;
     }
-    #skills h2 {
-        font-size: 1.3rem;
-    }
-    .contact-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .contact-title {
-        margin-bottom: 15px;
-    }
-    .contact-items {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
     .contact-card {
-        width: 100%;
-        max-width: 180px;
         padding: 15px;
-    }
-    .project-list {
-        grid-template-columns: 1fr; /* Satu kolom untuk HP */
-    }
-    #projects h2 {
-        font-size: 1.5rem;
     }
 }
