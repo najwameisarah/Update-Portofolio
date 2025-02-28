@@ -51,8 +51,6 @@ body {
     z-index: 1000;
     padding: 15px 0;
     height: 60px;
-    display: flex;
-    justify-content: center;
 }
 
 .container {
@@ -65,13 +63,14 @@ body {
 }
 
 .menu-toggle {
-    display: none; /* Sembunyikan secara default */
+    display: none; /* Sembunyikan di PC */
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 5px;
+    z-index: 1001;
 }
 
 .menu-toggle.active .fas.fa-bars::before {
@@ -86,21 +85,10 @@ body {
     transition: all 0.3s ease;
 }
 
-.nav-menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-.nav-menu li a:hover {
-    color: #ffeb3b;
-}
-
 .nav-menu.active {
-    display: flex;
+    display: flex; /* Tetap flex untuk PC, akan diubah di media query */
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
@@ -111,6 +99,34 @@ body {
 
 .nav-menu.active li {
     margin: 10px 0;
+}
+
+@media (max-width: 768px) { /* Tablet */
+    .menu-toggle {
+        display: block; /* Tampilkan tombol di tablet */
+    }
+    .nav-menu {
+        display: none; /* Sembunyikan menu default di tablet */
+    }
+    .nav-menu.active {
+        display: flex; /* Tampilkan saat toggle aktif */
+    }
+}
+
+@media (max-width: 480px) { /* HP */
+    .menu-toggle {
+        display: block; /* Tampilkan tombol di HP */
+    }
+    .nav-menu {
+        display: none; /* Sembunyikan menu default di HP */
+    }
+    .nav-menu.active {
+        display: flex; /* Tampilkan saat toggle aktif */
+        top: 40px; /* Sesuaikan dengan tinggi navbar HP */
+    }
+    .nav-menu li a {
+        font-size: 1rem; /* Sesuaikan ukuran font */
+    }
 }
 
 /* Header */
@@ -443,193 +459,4 @@ section {
 section.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Toggle Menu */
-.menu-toggle {
-    display: none; /* Sembunyikan di PC secara default */
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px;
-    z-index: 1001; /* Pastikan di atas konten */
-}
-
-.menu-toggle.active .fas.fa-bars::before {
-    content: "\f00d"; /* Ikon close (X) dari Font Awesome */
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.nav-menu.active {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 20px 0;
-    text-align: center;
-    z-index: 1000;
-}
-
-.nav-menu.active li {
-    margin: 10px 0;
-}
-
-@media (max-width: 768px) { /* Tablet */
-    body {
-        padding-top: 50px;
-    }
-    .navbar {
-        height: 50px;
-    }
-    .menu-toggle {
-        display: block; /* Tampilkan tombol di tablet */
-    }
-    .nav-menu {
-        display: none; /* Sembunyikan menu default di tablet */
-    }
-    .nav-menu li a {
-        font-size: 1rem;
-    }
-    .header-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .about-image {
-        max-width: 200px;
-        margin-bottom: 20px;
-    }
-    .skills-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .skills-title {
-        margin-bottom: 20px;
-    }
-    .skills-icons {
-        justify-content: center;
-        gap: 15px;
-    }
-    .skill-item img {
-        width: 60px;
-        height: 60px;
-    }
-    #skills h2 {
-        font-size: 1.5rem;
-    }
-    .contact-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .contact-title {
-        margin-bottom: 20px;
-    }
-    .contact-items {
-        justify-content: center;
-        gap: 15px;
-    }
-    .contact-card {
-        width: 100%;
-        max-width: 200px;
-    }
-    .project-list {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) { /* HP */
-    body {
-        padding-top: 40px;
-    }
-    .navbar {
-        height: 40px;
-    }
-    .menu-toggle {
-        display: block; /* Tampilkan tombol di HP */
-        position: absolute;
-        left: 20px;
-    }
-    .nav-menu {
-        display: none; /* Sembunyikan menu default di HP */
-    }
-    .nav-menu.active {
-        top: 40px;
-    }
-    .nav-menu li a {
-        font-size: 0.9rem;
-    }
-    .header-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .about-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .about-image {
-        max-width: 150px;
-        margin-bottom: 15px;
-    }
-    .about-text h2 {
-        font-size: 1.5rem;
-    }
-    .about-text p {
-        font-size: 1rem;
-    }
-    .skills-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .skills-title {
-        margin-bottom: 15px;
-    }
-    .skills-icons {
-        justify-content: center;
-        gap: 10px;
-    }
-    .skill-item img {
-        width: 50px;
-        height: 50px;
-    }
-    #skills h2 {
-        font-size: 1.3rem;
-    }
-    .contact-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-    .contact-title {
-        margin-bottom: 15px;
-    }
-    .contact-items {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .contact-card {
-        width: 100%;
-        max-width: 180px;
-        padding: 15px;
-    }
-    .project-list {
-        grid-template-columns: 1fr;
-    }
-    #projects h2 {
-        font-size: 1.5rem;
-    }
 }
