@@ -22,22 +22,6 @@ document.querySelector('.copy-button').addEventListener('click', function() {
     });
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        // Reset menu saat ukuran layar berubah ke PC
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-            }
-        });
-
 // Scroll Animation
 window.addEventListener("scroll", () => {
     const sections = document.querySelectorAll("section");
