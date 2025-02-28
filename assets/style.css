@@ -10,8 +10,7 @@ body {
     background-color: #000;
     color: #fff;
     line-height: 1.6;
-    /* Tambahkan padding top untuk menghindari tabrakan dengan navbar sticky */
-    padding-top: 60px; /* Sesuaikan dengan tinggi navbar */
+    padding-top: 60px; /* Menjaga konten dari navbar */
 }
 
 /* Loading Screen */
@@ -43,40 +42,52 @@ body {
 }
 
 /* Navigation */
-nav {
-    position: sticky;
+.navbar {
+    position: fixed;
     top: 0;
+    width: 100%;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     z-index: 1000;
     padding: 15px 0;
-    /* Pastikan tinggi navbar tetap */
     height: 60px;
+    display: flex;
+    justify-content: center;
 }
 
-nav .container {
+.container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav-menu {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 30px;
     align-items: center;
-    height: 100%;
 }
 
-nav ul li a {
+.nav-menu li a {
     color: #fff;
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-menu li a:hover {
     color: #ffeb3b;
 }
 
@@ -412,18 +423,41 @@ section.visible {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Toggle Menu */
+.menu-toggle.active .fas.fa-bars::before {
+    content: "\f00d"; /* Ikon close (X) dari Font Awesome */
+}
+
+.nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.nav-menu li {
+    margin: 10px 0;
+}
+
 @media (max-width: 768px) { /* Tablet */
     body {
-        padding-top: 50px; /* Sesuaikan padding top untuk tablet */
+        padding-top: 50px;
     }
-    nav {
+    .navbar {
         height: 50px;
     }
-    nav ul {
-        gap: 15px;
+    .menu-toggle {
+        display: block;
     }
-    nav ul li a {
+    .nav-menu {
+        display: none;
+    }
+    .nav-menu li a {
         font-size: 1rem;
     }
     .header-content {
@@ -472,23 +506,24 @@ section.visible {
         max-width: 200px;
     }
     .project-list {
-        grid-template-columns: 1fr; /* Satu kolom untuk tablet */
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) { /* HP */
     body {
-        padding-top: 40px; /* Sesuaikan padding top untuk HP */
+        padding-top: 40px;
     }
-    nav {
+    .navbar {
         height: 40px;
     }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
+    .menu-toggle {
+        font-size: 1.2rem;
     }
-    nav ul li a {
+    .nav-menu.active {
+        top: 40px;
+    }
+    .nav-menu li a {
         font-size: 0.9rem;
     }
     .header-content {
@@ -545,7 +580,7 @@ section.visible {
         padding: 15px;
     }
     .project-list {
-        grid-template-columns: 1fr; /* Satu kolom untuk HP */
+        grid-template-columns: 1fr;
     }
     #projects h2 {
         font-size: 1.5rem;
