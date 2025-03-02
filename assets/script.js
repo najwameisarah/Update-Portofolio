@@ -1,8 +1,16 @@
-// Loading Screen
 window.addEventListener("load", () => {
-    document.getElementById("loading").style.display = "none";
+    try {
+        const loading = document.getElementById("loading");
+        if (loading) {
+            loading.style.display = "none";
+            console.log("Loading screen hidden");
+        } else {
+            console.error("Loading element not found");
+        }
+    } catch (e) {
+        console.error("Error hiding loading screen:", e);
+    }
 });
-
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
