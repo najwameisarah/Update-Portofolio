@@ -45,7 +45,12 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: #ffeb3b;
+    cursor: pointer;
+}
 /* Navigation */
 nav {
     position: sticky;
@@ -59,13 +64,20 @@ nav .container {
     padding: 15px 0;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
+ nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+    }
+nav ul.active {
+        display: flex;
+    }
 nav ul li a {
     color: #fff;
     text-decoration: none;
