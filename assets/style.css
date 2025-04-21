@@ -45,12 +45,7 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-.menu-toggle {
-    display: none;
-    font-size: 2rem;
-    color: #ffeb3b;
-    cursor: pointer;
-}
+
 /* Navigation */
 nav {
     position: sticky;
